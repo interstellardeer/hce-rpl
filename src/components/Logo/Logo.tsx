@@ -1,29 +1,40 @@
+'use client'
+
 import clsx from 'clsx'
+import Image from 'next/image'
 import React from 'react'
 
 interface Props {
   className?: string
   loading?: 'lazy' | 'eager'
-  priority?: 'auto' | 'high' | 'low'
+  priority?: boolean
 }
 
 export const Logo = (props: Props) => {
-  const { loading: loadingFromProps, priority: priorityFromProps, className } = props
-
-  const loading = loadingFromProps || 'lazy'
-  const priority = priorityFromProps || 'low'
+  const { className, loading = 'lazy', priority = false } = props
 
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      alt="Payload Logo"
-      width={193}
-      height={34}
-      loading={loading}
-      fetchPriority={priority}
-      decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
-      src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-logo-light.svg"
-    />
+    <>
+      {/* Light Mode */}
+      <Image
+        alt="Logo Light"
+        width={193}
+        height={34}
+        loading={loading}
+        priority={priority}
+        className={clsx('block [data-theme="dark"]:hidden max-w-[9.375rem] w-full h-[34px]', className)}
+        src="/logo-long-white.svg"
+      />
+      {/* Dark Mode */}
+      <Image
+        alt="Logo Dark"
+        width={193}
+        height={34}
+        loading={loading}
+        priority={priority}
+        className={clsx('hidden [data-theme="dark"]:block max-w-[9.375rem] w-full h-[34px]', className)}
+        src="/logo-long-black.svg"
+      />
+    </>
   )
 }
