@@ -58,14 +58,14 @@ const PageClient: React.FC = () => {
         <label className="flex items-center space-x-2">
           <Checkbox
             checked={eventChecked}
-            onCheckedChange={(val:any) => setEventChecked(Boolean(val))}
+            onCheckedChange={(val) => setEventChecked(Boolean(val))}
           />
           <span className="text-sm">Event</span>
         </label>
         <label className="flex items-center space-x-2">
           <Checkbox
             checked={penelitianChecked}
-            onCheckedChange={(val:any) => setPenelitianChecked(Boolean(val))}
+            onCheckedChange={(val) => setPenelitianChecked(Boolean(val))}
           />
           <span className="text-sm">Penelitian</span>
         </label>

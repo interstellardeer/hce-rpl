@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
 export default async function Page({ searchParams }: { searchParams: { category?: string } }) {
-  const category = searchParams?.category || 'all'
+  const category = searchParams.category || 'all'
 
   const payload = await getPayload({ config: configPromise })
 
