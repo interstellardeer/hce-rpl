@@ -12,17 +12,15 @@ const Page = async () => {
   const posts = await payload.find({
     collection: 'posts',
     depth: 1,
+    pagination: false,
     limit: 3,
     overrideAccess: false,
-    pagination: false,
-    sort: '-createdAt',
+    sort: '-created_at',
     select: {
       title: true,
       slug: true,
       categories: true,
-      authors: true,
-      heroImage: true,
-      createdAt: true,
+      meta: true,
     },
   })
   return (
