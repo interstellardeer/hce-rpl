@@ -33,7 +33,7 @@ export async function Footer() {
                 <CMSLink className="text-white" key={i} {...link} />
               ))}
               <LinkedInButtonLink />
-              <GoogleScholarButtonLink />
+              <GoogleScholarButtonLink url='https://scholar.google.co.id/citations?user=lYVKI34AAAAJ'/>
             </nav>
           </div>
         </div>

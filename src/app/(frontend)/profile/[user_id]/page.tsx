@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import NotFound from '../../not-found'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
+import { GoogleScholarButtonLink } from '@/components/Link'
 
 type SearchParams = Promise<{ user_id: string }>;
 
@@ -28,7 +29,7 @@ export default async function UserProfilePage({ params }: { params: SearchParams
     })
 
     return (
-      <main className="w-full max-w-4xl mx-auto py-12">
+      <main className="w-full max-w-4xl mx-auto py-12 container">
         {/* Profile section */}
         <div className="flex items-center gap-6 mb-8">
           {typeof user.profileImage === 'object' && user.profileImage?.url && (
@@ -44,14 +45,7 @@ export default async function UserProfilePage({ params }: { params: SearchParams
             <h1 className="text-3xl font-bold">{user.name}</h1>
             <p className="text-gray-600">{user.email}</p>
             {user.googleScholarUrl && (
-              <a
-                href={user.googleScholarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline text-sm mt-1 inline-block"
-              >
-                Google Scholar Profile
-              </a>
+              <GoogleScholarButtonLink url={user.googleScholarUrl}/>
             )}
           </div>
         </div>
