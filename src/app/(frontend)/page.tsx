@@ -95,8 +95,8 @@ const Page = async () => {
                 src="/asyifa-imanda-septiana.png"
                 alt="Asyifa Imanda Septiana"
                 className="rounded-xl w-full max-w-sm object-cover shadow-md"
-                width={40}
-                height={40}
+                width={800}
+                height={800}
               />
             </div>
           </div>
