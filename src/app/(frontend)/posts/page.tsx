@@ -9,8 +9,14 @@ import PageClient from './page.client'
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
-export default async function Page({ searchParams }: { searchParams: { category?: string } }) {
-  const category = searchParams.category || 'all'
+interface PageProps {
+  searchParams?: {
+    category?: string
+  }
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const category = searchParams?.category || 'all'
 
   const payload = await getPayload({ config: configPromise })
 
