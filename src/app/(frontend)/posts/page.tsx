@@ -9,21 +9,18 @@ import PageClient from './page.client'
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
-interface PageProps {
-  searchParams?: {
-    category?: string
-  }
-}
+type SearchParams = Promise<{ category?: string }>;
 
-export default async function Page({ searchParams }: PageProps) {
-  const category = searchParams?.category || 'all'
+export default async function Page({ searchParams }: { searchParams: SearchParams }) {
+  const { category } = await searchParams;
+  const categoryValue = category || 'all';
 
   const payload = await getPayload({ config: configPromise })
 
   // Prepare default empty filter
   let whereCondition = {}
 
-  if (category !== 'all') {
+  if (categoryValue !== 'all') {
     const categoriesRes = await payload.find({
       collection: 'categories',
       where: {
@@ -33,32 +30,34 @@ export default async function Page({ searchParams }: PageProps) {
       },
     })
 
-    const categoryDocs = categoriesRes.docs
-    const eventCat = categoryDocs.find((c) => c.slug === 'events')
-    const penelitianCat = categoryDocs.find((c) => c.slug === 'research')
+    const categoryDocs = categoriesRes.docs;
+    const eventCat = categoryDocs.find((c) => c.slug === 'events');
+    const penelitianCat = categoryDocs.find((c) => c.slug === 'research');
 
-    if (category === 'events' && eventCat) {
+    // Menyusun filter berdasarkan kategori
+    if (categoryValue === 'events' && eventCat) {
       whereCondition = {
         categories: {
           contains: eventCat.id,
         },
-      }
-    } else if (category === 'research' && penelitianCat) {
+      };
+    } else if (categoryValue === 'research' && penelitianCat) {
       whereCondition = {
         categories: {
           contains: penelitianCat.id,
         },
-      }
-    } else if (category === 'both' && eventCat && penelitianCat) {
+      };
+    } else if (categoryValue === 'both' && eventCat && penelitianCat) {
       whereCondition = {
         and: [
           { categories: { contains: eventCat.id } },
           { categories: { contains: penelitianCat.id } },
         ],
-      }
+      };
     }
   }
 
+  // Menarik data posts dari Payload
   const posts = await payload.find({
     collection: 'posts',
     depth: 1,
