@@ -4,10 +4,12 @@ import NotFound from '../../not-found'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
 
-export default async function UserProfilePage({ params }: { params: { user_id: string } }) {
+type SearchParams = Promise<{ user_id: string }>;
+
+export default async function UserProfilePage({ params }: { params: SearchParams }) {
   try {
-    const user_id = params.user_id
-    const payload = await getPayload({ config: configPromise })
+    const { user_id } = await params;
+    const payload = await getPayload({ config: configPromise });
 
     const user = await payload.findByID({
       collection: 'users',
