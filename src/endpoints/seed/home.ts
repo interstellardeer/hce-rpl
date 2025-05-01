@@ -47,7 +47,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Payload Website Template',
+                  text: 'Human Centered Engineering',
                   version: 1,
                 },
               ],
@@ -666,9 +666,9 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       },
     ],
     meta: {
-      description: 'An open-source website built with Payload and Next.js.',
+      description: 'Platform Human Centered Engineering yang berfokus pada pengembangan perangkat lunak inovatif, berkelanjutan, dan berpusat pada manusia. Temukan artikel, riset, dan proyek terkini seputar rekayasa perangkat lunak, desain UX, dan teknologi masa depan.',
       image: heroImage.id,
-      title: 'Payload Website Template',
+      title: 'Human Centered Engineering - Rekayasa Perangkat Lunak',
     },
     title: 'Home',
   }

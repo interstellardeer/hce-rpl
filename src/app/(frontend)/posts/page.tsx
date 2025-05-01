@@ -103,6 +103,6 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
 
 export function generateMetadata() {
   return {
-    title: `Payload Website Template Posts`,
+    title: `Human Centered Engineering Posts`,
   }
 }
