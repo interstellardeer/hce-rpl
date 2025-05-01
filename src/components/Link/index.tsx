@@ -65,20 +65,6 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   )
 }
 
-const linkToPosts = {
-  type: 'custom',
-  label: 'Posts',
-  url: '/posts',
-  newTab: false,
-  reference: null,
-} as const;
-
-export const CMSLinkToPosts: React.FC<{
-  className?: string
-}> = ({ className }) => {
-  return <CMSLink className={cn(className)} {...linkToPosts} />
-}
-
 export const LinkedInButtonLink = () => {
   return (
     <Link

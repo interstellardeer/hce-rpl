@@ -4,7 +4,7 @@ import React from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
-import { CMSLink, CMSLinkToPosts } from '@/components/Link'
+import { CMSLink} from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 
@@ -13,7 +13,6 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   return (
     <nav className="flex gap-3 items-center">
-      <CMSLinkToPosts className='hover:text-underline'/>
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
