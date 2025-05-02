@@ -4,7 +4,7 @@ export const getServerSideURL = () => {
   let url = process.env.NEXT_PUBLIC_SERVER_URL
 
   if (!url && process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return process.env.VERCEL_PROJECT_PRODUCTION_URL
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   }
 
   if (!url) {
@@ -24,7 +24,7 @@ export const getClientSideURL = () => {
   }
 
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   }
 
   return process.env.NEXT_PUBLIC_SERVER_URL || ''
