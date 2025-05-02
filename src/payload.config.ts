@@ -27,7 +27,19 @@ export default buildConfig({
         {
           url: '/favicon.ico',
         }
-      ]
+      ],
+      openGraph: {
+        description: 'An interdisciplinary platform focused on human-centered approaches in engineering, aiming to improve lives through thoughtful design and innovation.',
+        images: [
+          {
+            url: 'https://hce-rpl.vercel.app/logo-OG.webp',
+            width: 1280,
+            height: 720,
+          },
+        ],
+        siteName: 'HCE RPL',
+        title: 'Human Centered Engineering RPL UPI',
+      },
     },
     components: {
       graphics: {
