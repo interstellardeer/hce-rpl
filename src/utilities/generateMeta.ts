@@ -35,12 +35,6 @@ export const generateMeta = async (args: {
   const title = doc?.meta?.title
     ? doc?.meta?.title
     : 'Human Centered Engineering - Rekayasa Perangkat Lunak'
-
-    console.log('[Meta Debug]', {
-      title,
-      ogImage,
-      docImage: doc?.meta?.image,
-    })
     
   return {
     description: doc?.meta?.description,
