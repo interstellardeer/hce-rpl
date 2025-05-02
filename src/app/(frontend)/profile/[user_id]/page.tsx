@@ -37,8 +37,8 @@ export default async function UserProfilePage({ params }: { params: SearchParams
               src={user.profileImage.url}
               alt={`${user.name}'s profile`}
               className="w-20 h-20 rounded-full object-cover border"
-              width={20}
-              height={20}
+              width={100}
+              height={100}
             />
           )}
           <div>
