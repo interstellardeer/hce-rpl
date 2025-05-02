@@ -6,10 +6,10 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'An open-source website built with Payload and Next.js.',
   images: [
     {
-      url: `${getServerSideURL()}/logo-long-black-OG.webp`,
+      url: `${getServerSideURL()}/logo-OG.webp`,
     },
   ],
-  siteName: 'Human Centered Engineering - Rekayasa Perangkat Lunak',
+  siteName: 'Human Centered Engineering',
   title: 'Human Centered Engineering - Rekayasa Perangkat Lunak',
 }
 
