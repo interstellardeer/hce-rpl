@@ -15,7 +15,7 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 
     url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
   }
-
+  console.log('ogUrl', url)
   return url
 }
 
@@ -27,7 +27,7 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Human Centered Engineering - Rekayasa Perangkat Lunak'
+    ? doc?.meta?.title
     : 'Human Centered Engineering - Rekayasa Perangkat Lunak'
 
   return {
