@@ -6,13 +6,24 @@ import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
+  const serverUrl = getServerSideURL()
+
   if (image && typeof image === 'object' && 'url' in image) {
-    const ogUrl = image.sizes?.og?.url ?? image.url
-    return getServerSideURL() + ogUrl
+    const ogUrl = image?.sizes?.og?.url
+    const originalUrl = image?.url
+
+    if (ogUrl) {
+      return serverUrl + ogUrl
+    }
+
+    if (originalUrl && !originalUrl.includes('image-hero')) {
+      return serverUrl + originalUrl
+    }
   }
 
-  return getServerSideURL() + '/logo-OG.webp'
+  return serverUrl + '/logo-OG.webp'
 }
+
 
 export const generateMeta = async (args: {
   doc: Partial<Page> | Partial<Post> | null
@@ -25,6 +36,12 @@ export const generateMeta = async (args: {
     ? doc?.meta?.title
     : 'Human Centered Engineering - Rekayasa Perangkat Lunak'
 
+    console.log('[Meta Debug]', {
+      title,
+      ogImage,
+      docImage: doc?.meta?.image,
+    })
+    
   return {
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({

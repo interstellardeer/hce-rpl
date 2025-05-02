@@ -34,7 +34,7 @@ export default buildConfig({
           {
             url: 'https://hce-rpl.vercel.app/logo-OG.webp',
             width: 1200,
-            height: 630,
+            height: 630,  
           },
         ],
         siteName: 'HCE RPL',
