@@ -6,17 +6,12 @@ import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
-  const serverUrl = getServerSideURL()
-
-  let url = serverUrl + '/logo-OG.webp'
-
   if (image && typeof image === 'object' && 'url' in image) {
-    const ogUrl = image.sizes?.og?.url
-
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
+    const ogUrl = image.sizes?.og?.url ?? image.url
+    return getServerSideURL() + ogUrl
   }
-  console.log('ogUrl', url)
-  return url
+
+  return getServerSideURL() + '/logo-OG.webp'
 }
 
 export const generateMeta = async (args: {
